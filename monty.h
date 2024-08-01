@@ -17,8 +17,8 @@
 typedef struct _stack_node
 {
         int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+        struct _stack_node *prev;
+        struct _stack_node *next;
 } stacknode;
 
 /**
@@ -32,7 +32,7 @@ typedef struct _stack_node
 typedef struct _instruction
 {
         char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+        void (*f)(stacknode **stack, unsigned int line_number);
 } instruction;
 
 #endif

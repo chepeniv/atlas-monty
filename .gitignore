@@ -1,3 +1,5 @@
 *.m
 a.out
 monty
+*.copy.c
+ref/

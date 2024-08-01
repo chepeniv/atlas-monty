@@ -25,6 +25,15 @@ compilation : `gcc -Wall -Werror -Wextra -pedantic -ggdb3 *.c -o monty`
 this project's goal is to create an interpreter for monty bytecode files
 
 ### monty bytecode
+opcodes : 
+	- `push <int>` -- adds an element to the top of a stack with value `<int>`
+	- `pop` -- removes the top element
+	- `swap` -- swaps the top two elements
+	- `add` -- adds the top two elements 
+	- `pint` -- prints out the top element's value
+	- `pall` -- prints out all of the element's values
+	- `nop` -- doesn't do anything
+
 typically monty bytecode files use the `.m` extension. there can only be one instruction per line along with any amount of whitespace. blank lines are also permitted. any text following the opcode and its arguments is ignored, effectively making the de facto comment.
 
 ### the monty program

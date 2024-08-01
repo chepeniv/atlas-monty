@@ -2,11 +2,13 @@
 
 int main(int argc, char **argv)
 {
-	FILE *mfile;
-	char *file_line = NULL;
+	stacknode *top = NULL;
+	unsigned int line_num = 0;
 	size_t read_bytes;
-	char *open_mode = "r";
-	/* create stack variable */
+	FILE *monty_file;
+	char **opcode = NULL,
+		 *file_line = NULL,
+		 *open_mode = "r";
 
 	if (argc != 2)
 	{
@@ -14,19 +16,29 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 
-	mfile = fopen(argv[1], open_mode);
-	if (mfile == NULL)
+	monty_file = fopen(argv[1], open_mode);
+	if (monty_file == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Cant't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
 	}
 
-	while (getline(&file_line, &read_bytes, mfile) > -1)
+	top = malloc(sizeof(stacknode));
+	if (top == NULL)
 	{
-		/* track line_num variable
-		 * interpret(file_line) or parse(file_line)
-		 * tokenisize line
-		 * get first item
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	top->n = 0;
+	top->next = NULL;
+	top->prev = NULL;
+
+	while (getline(&file_line, &read_bytes, monty_file) > -1)
+	{
+		line_num++;
+		opcode = parse(file_line);
+
+		/*
 		 * match item
 		 * call matching func and pass arg
 		 * if no match print error ?
@@ -36,7 +48,34 @@ int main(int argc, char **argv)
 	}
 
 	free(file_line);
-	fclose(mfile);
+	fclose(monty_file);
 
 	return (EXIT_SUCCESS);
+}
+
+char **parse(char *file_line)
+{
+	char *delims = " \t\n";
+	char *line_dup = strdup(file_line);
+	char **instr,
+		 *opcode = NULL,
+		 *arg = NULL;
+
+	opcode = strtok(line_dup, delims);
+	if (opcode != NULL)
+		arg = strtok(line_dup, delims);
+
+	instr = malloc(sizeof(void *) * 2);
+	if (instr == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		free(line_dup);
+		exit(EXIT_FAILURE);
+	}
+
+	instr[0] = opcode;
+	instr[1] = arg;
+
+	free(line_dup);
+	return (instr);
 }
