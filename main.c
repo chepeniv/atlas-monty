@@ -6,6 +6,7 @@ int main(int argc, char **argv)
 	char *file_line = NULL;
 	size_t read_bytes;
 	char *open_mode = "r";
+	/* create stack variable */
 
 	if (argc != 2)
 	{
@@ -21,7 +22,18 @@ int main(int argc, char **argv)
 	}
 
 	while (getline(&file_line, &read_bytes, mfile) > -1)
-		printf("%s", file_line);
+	{
+		/* track line_num variable
+		 * interpret(file_line) or parse(file_line)
+		 * tokenisize line
+		 * get first item
+		 * match item
+		 * call matching func and pass arg
+		 * if no match print error ?
+		 *
+		 * use atoi(), don't worry about overflows
+		 */
+	}
 
 	free(file_line);
 	fclose(mfile);
