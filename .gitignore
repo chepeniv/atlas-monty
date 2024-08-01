@@ -1,4 +1,5 @@
 *.m
+*.backup
 a.out
 monty
 *.copy.c

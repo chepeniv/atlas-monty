@@ -8,7 +8,10 @@ int main(int argc, char **argv)
 	FILE *monty_file;
 	char **opcode = NULL,
 		 *file_line = NULL,
+		 *opcode = NULL,
 		 *open_mode = "r";
+	void (*f)(stacknode **stack, unsigned int line_number);
+	instr *instr_set;
 
 	if (argc != 2)
 	{
@@ -23,33 +26,20 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 
-	top = malloc(sizeof(stacknode));
-	if (top == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	top->n = 0;
-	top->next = NULL;
-	top->prev = NULL;
-
+	instr_set = init_instr_set();
 	while (getline(&file_line, &read_bytes, monty_file) > -1)
 	{
 		line_num++;
 		opcode = parse(file_line);
-
-		/*
-		 * match item
-		 * call matching func and pass arg
-		 * if no match print error ?
-		 *
-		 * use atoi(), don't worry about overflows
-		 */
+		if (*opcode != NULL)
+		{
+			f = get_instr(opcode);
+			exec_instr(opcode, f, top, line_num);
+		}
 	}
 
 	free(file_line);
 	fclose(monty_file);
-
 	return (EXIT_SUCCESS);
 }
 
@@ -75,7 +65,6 @@ char **parse(char *file_line)
 
 	instr[0] = opcode;
 	instr[1] = arg;
-
 	free(line_dup);
 	return (instr);
 }

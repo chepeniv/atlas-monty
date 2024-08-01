@@ -29,10 +29,10 @@ typedef struct _stack_node
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
  */
-typedef struct _instruction
+typedef struct _instr
 {
         char *opcode;
         void (*f)(stacknode **stack, unsigned int line_number);
-} instruction;
+} instr;
 
 #endif

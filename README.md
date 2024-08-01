@@ -25,7 +25,8 @@ compilation : `gcc -Wall -Werror -Wextra -pedantic -ggdb3 *.c -o monty`
 this project's goal is to create an interpreter for monty bytecode files
 
 ### monty bytecode
-opcodes : 
+opcodes :
+
 	- `push <int>` -- adds an element to the top of a stack with value `<int>`
 	- `pop` -- removes the top element
 	- `swap` -- swaps the top two elements
