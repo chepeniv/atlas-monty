@@ -51,6 +51,7 @@ void op_pop(stacknode **top, char *data, unsigned int line);
 void op_nop(stacknode **top, char *data, unsigned int line);
 void op_pint(stacknode **top, char *data, unsigned int line);
 void op_pall(stacknode **top, char *data, unsigned int line);
+void op_invalid(char **opcode, unsigned int line);
 void delete_stack(stacknode **top);
 
 #endif
