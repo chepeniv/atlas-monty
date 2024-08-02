@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * get_instr -
- * @set:
- * @opcode:
+ * get_instr - find a function based on opcode given
+ * @set: set of instructions
+ * @opcode: the name of the instruction
  *
- * Return:
+ * Return: a function pointer that carries out the instruction
  */
 void (*get_instr(instr set[], char *opcode))
 (stacknode * *top, char *data, unsigned int line)
@@ -26,15 +26,14 @@ void (*get_instr(instr set[], char *opcode))
 	return (f);
 }
 
-
 /**
- * exec_instr -
- * @opcode:
- * @f:
- * @stack:
- * @line:
+ * exec_instr - runs the instruction given
+ * @opcode: the full instruction
+ * @f: the instruction
+ * @stack: the stack storing the monty program data
+ * @line: line number where the instruction occurs
  *
- * Return:
+ * Return: void
  */
 void exec_instr(
 		char **opcode,

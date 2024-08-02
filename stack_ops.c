@@ -4,12 +4,12 @@
 int is_int(char *str);
 
 /**
- * op_push -
- * @top:
- * @data:
- * @line:
+ * op_push - puts a new node at the top of the stack
+ * @top: the top of the stack
+ * @data: the line data
+ * @line: the line number
  *
- * Return:
+ * Return: void
  */
 void op_push(stacknode **top, char *data, unsigned int line)
 {
@@ -44,12 +44,12 @@ void op_push(stacknode **top, char *data, unsigned int line)
 }
 
 /**
- * op_pop -
- * @top:
- * @data:
- * @line:
+ * op_pop - removes the top element of the stack given
+ * @top: the top of the stack
+ * @data: the line data
+ * @line: the line number
  *
- * Return:
+ * Return: void
  */
 void op_pop(stacknode **top, char *data, unsigned int line)
 {

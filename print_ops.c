@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * op_pint -
- * @top:
- * @data:
- * @line:
+ * op_pint - print's out the top element's value
+ * @top: the top of the prog stack
+ * @data: the line data
+ * @line: the line numeber
  *
- * Return:
+ * Return: void
  */
 void op_pint(stacknode **top, char *data, unsigned int line)
 {
@@ -20,12 +20,12 @@ void op_pint(stacknode **top, char *data, unsigned int line)
 
 
 /**
- * op_pall -
- * @top:
- * @data:
- * @line:
+ * op_pall - prints out all of the stack node's values in pop-order
+ * @top: the top of the stack
+ * @data: the line data
+ * @line: the line number
  *
- * Return:
+ * Return: void
  */
 void op_pall(stacknode **top, char *data, unsigned int line)
 {

@@ -13,13 +13,12 @@ instr instr_set[] = {
 	 */
 };
 
-
 /**
- * main -
- * @argc:
- * @argv:
+ * main - init program
+ * @argc: number of args passed
+ * @argv: array of args passed
  *
- * Return:
+ * Return: exit codes
  */
 int main(int argc, char **argv)
 {
@@ -67,10 +66,10 @@ int main(int argc, char **argv)
 
 
 /**
- * parse -
- * @file_line:
+ * parse - tokenize a file line
+ * @file_line: string to parse
  *
- * Return:
+ * Return: token array of size two
  */
 char **parse(char *file_line)
 {

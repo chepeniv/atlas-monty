@@ -3,11 +3,11 @@
 /* op_add */
 
 /**
- * op_invalid -
- * @opcode:
- * @line:
+ * op_invalid - the command ran if an invalid function is given
+ * @opcode: the instruction tokens
+ * @line: the instruction's line number
  *
- * Return:
+ * Return: void
  */
 void op_invalid(char **opcode, unsigned int line)
 {
@@ -17,10 +17,10 @@ void op_invalid(char **opcode, unsigned int line)
 }
 
 /**
- * op_nop -
- * @stack:
- * @data:
- * @line:
+ * op_nop - the do-nothing instruction
+ * @stack: the program's stack
+ * @data: the line data
+ * @line: the line number
  *
  * Return:
  */
