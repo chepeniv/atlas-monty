@@ -29,6 +29,14 @@ void op_nop(stacknode **stack, char *data, unsigned int line)
 	(void)line;
 }
 
+/**
+ * op_add - collapses the top two nodes sum-wise
+ * @top: the program's stack
+ * @data: the line data
+ * @line: the line number
+ *
+ * Return: void
+ */
 void op_add(stacknode **top, char *data, unsigned int line)
 {
 	int a, b;

@@ -13,9 +13,6 @@
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
  * @next: points to the next element of the stack (or queue)
- *
- * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO
  */
 typedef struct _stack_node
 {
@@ -25,12 +22,9 @@ typedef struct _stack_node
 } stacknode;
 
 /**
- * struct _instruction - opcode and its function
+ * struct _instr - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
- *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
  */
 typedef struct _instr
 {

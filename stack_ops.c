@@ -1,8 +1,30 @@
 #include "monty.h"
 
-/* op_swap */
+/**
+ * is_int - checks whether a string is an integer
+ * @str: string to analyze
+ *
+ * Return: true or false
+ */
+int is_int(char *str)
+{
+	int i = 0;
 
-int is_int(char *str);
+	if
+	(str == NULL ||
+	(!isdigit(str[i]) && str[i] != '-'))
+		return (false);
+
+	i++;
+	while (str[i] != '\0')
+	{
+		if (!isdigit(str[i]))
+			return (false);
+		i++;
+	}
+
+	return (true);
+}
 
 /**
  * op_push - puts a new node at the top of the stack
@@ -76,6 +98,14 @@ void op_pop(stacknode **top, char *data, unsigned int line)
 	free(new_top);
 }
 
+/**
+ * op_swap - swaps the order of the top two nodes of the given stack
+ * @top: the top of the stack
+ * @data: the line data
+ * @line: the line number
+ *
+ * Return: void
+ */
 void op_swap(stacknode **top, char *data, unsigned int line)
 {
 	stacknode **newtop;
@@ -104,10 +134,10 @@ void op_swap(stacknode **top, char *data, unsigned int line)
 }
 
 /**
- * delete_stack -
- * @top:
+ * delete_stack - completely frees the memory allocated for a stack
+ * @top: top of the stack
  *
- * Return:
+ * Return: void
  */
 void delete_stack(stacknode **top)
 {
@@ -118,30 +148,4 @@ void delete_stack(stacknode **top)
 	{
 		op_pop(top, NULL, 0);
 	}
-}
-
-/**
- * is_int -
- * @str:
- *
- * Return:
- */
-int is_int(char *str)
-{
-	int i = 0;
-
-	if
-	(str == NULL ||
-	(!isdigit(str[i]) && str[i] != '-'))
-		return (false);
-
-	i++;
-	while (str[i] != '\0')
-	{
-		if (!isdigit(str[i]))
-			return (false);
-		i++;
-	}
-
-	return (true);
 }
