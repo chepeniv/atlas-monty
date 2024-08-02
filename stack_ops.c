@@ -1,6 +1,7 @@
 #include "monty.h"
 
 /* op_swap */
+
 int is_int(char *str);
 
 /**
@@ -67,6 +68,31 @@ void op_pop(stacknode **top, char *data, unsigned int line)
 	*top = (*top)->next;
 	/*(*top)->prev = NULL;*/
 	free(old_top);
+}
+
+void op_swap(stacknode **top, char *data, unsigned int line)
+{
+	stacknode **newtop;
+
+	(void) data;
+	(void) line;
+
+	newtop = malloc(sizeof(void *));
+	if (newtop == NULL)
+	{
+		exit(EXIT_FAILURE);
+	}
+
+	*newtop = (*top)->next;
+
+	(*top)->prev = *newtop;
+	(*top)->next = (*newtop)->next;
+
+	(*newtop)->prev = NULL;
+	(*newtop)->next = *top;
+
+	*top = *newtop;
+	free(newtop);
 }
 
 /**

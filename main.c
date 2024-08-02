@@ -6,9 +6,9 @@ instr instr_set[] = {
 	{"pint", op_pint},
 	{"pall", op_pall},
 	{"nop", op_nop},
+	{"swap", op_swap},
 	{NULL, NULL}
 	/*
-	 * {"swap", op_swap},
 	 * {"add", op_add},
 	 */
 };
