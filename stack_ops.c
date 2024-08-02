@@ -17,7 +17,7 @@ void op_push(stacknode **top, char *data, unsigned int line)
 	data[0] < '0' ||
 	data[0] > '9')
 	{
-		dprintf(STDERR_FILENO, "L<%d>: usage: push integer\n", line);
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
 	}
 
