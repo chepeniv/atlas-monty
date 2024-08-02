@@ -14,7 +14,10 @@ void (*get_instr(instr set[], char *opcode))(stacknode **top, char *data, unsign
 		}
 		i++;
 	}
-	return (f);
+
+	if (f != NULL)
+		return (f);
+	exit(EXIT_FAILURE);
 }
 
 void exec_instr(
