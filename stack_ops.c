@@ -58,7 +58,7 @@ void op_pop(stacknode **top, char *data, unsigned int line)
 	op_nop(top, data, line);
 	if (top == NULL || *top == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pop, stack empty\n", line);
+		dprintf(STDERR_FILENO, "L%u: can't pop an stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 
