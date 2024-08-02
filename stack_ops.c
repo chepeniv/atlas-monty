@@ -77,20 +77,18 @@ void op_swap(stacknode **top, char *data, unsigned int line)
 	(void) data;
 	(void) line;
 
+	if (top == NULL || (*top)->next == NULL)
+		exit(EXIT_FAILURE);
+
 	newtop = malloc(sizeof(void *));
 	if (newtop == NULL)
-	{
 		exit(EXIT_FAILURE);
-	}
 
 	*newtop = (*top)->next;
-
 	(*top)->prev = *newtop;
 	(*top)->next = (*newtop)->next;
-
 	(*newtop)->prev = NULL;
 	(*newtop)->next = *top;
-
 	*top = *newtop;
 	free(newtop);
 }
