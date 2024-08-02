@@ -7,10 +7,8 @@ instr instr_set[] = {
 	{"pall", op_pall},
 	{"nop", op_nop},
 	{"swap", op_swap},
+	{"add", op_add},
 	{NULL, NULL}
-	/*
-	 * {"add", op_add},
-	 */
 };
 
 /**

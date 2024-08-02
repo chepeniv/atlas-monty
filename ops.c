@@ -1,7 +1,5 @@
 #include "monty.h"
 
-/* op_add */
-
 /**
  * op_invalid - the command ran if an invalid function is given
  * @opcode: the instruction tokens
@@ -29,4 +27,23 @@ void op_nop(stacknode **stack, char *data, unsigned int line)
 	(void)stack;
 	(void)data;
 	(void)line;
+}
+
+void op_add(stacknode **top, char *data, unsigned int line)
+{
+	int a, b;
+
+	(void) data;
+	if
+	(top == NULL ||
+	*top == NULL ||
+	(*top)->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't add, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	a = (*top)->n;
+	b = (*top)->next->n;
+	printf("%d\n", (a + b));
 }

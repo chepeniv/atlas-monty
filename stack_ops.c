@@ -75,8 +75,6 @@ void op_swap(stacknode **top, char *data, unsigned int line)
 	stacknode **newtop;
 
 	(void) data;
-	(void) line;
-
 	if
 	(top == NULL ||
 	*top == NULL ||
