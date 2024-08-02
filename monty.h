@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
  * struct _stack_node - doubly linked list representation of a stack (or queue)
@@ -32,7 +33,19 @@ typedef struct _stack_node
 typedef struct _instr
 {
         char *opcode;
-        void (*f)(stacknode **stack, unsigned int line_number);
+        void (*f)(stacknode **stack, char *data, unsigned int line);
 } instr;
+
+instr *init_instr_set();
+char **parse(char *file_line);
+void exec_instr(
+		char **opcode,
+		void (*f)(stacknode **stack, char *data, unsigned int line),
+		stacknode **stack,
+		unsigned int line);
+
+void (*get_instr(instr *set, char *opcode))(stacknode **top, char *data, unsigned int line);
+void op_pall(stacknode **top, char *data, unsigned int line);
+void op_push(stacknode **top, char *data, unsigned int line);
 
 #endif

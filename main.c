@@ -8,9 +8,8 @@ int main(int argc, char **argv)
 	FILE *monty_file;
 	char **opcode = NULL,
 		 *file_line = NULL,
-		 *opcode = NULL,
 		 *open_mode = "r";
-	void (*f)(stacknode **stack, unsigned int line_number);
+	void (*f)(stacknode **stack, char *data, unsigned int line);
 	instr *instr_set;
 
 	if (argc != 2)
@@ -33,8 +32,8 @@ int main(int argc, char **argv)
 		opcode = parse(file_line);
 		if (*opcode != NULL)
 		{
-			f = get_instr(opcode);
-			exec_instr(opcode, f, top, line_num);
+			f = get_instr(instr_set, *opcode);
+			exec_instr(opcode, f, &top, line_num);
 		}
 	}
 
@@ -51,10 +50,6 @@ char **parse(char *file_line)
 		 *opcode = NULL,
 		 *arg = NULL;
 
-	opcode = strtok(line_dup, delims);
-	if (opcode != NULL)
-		arg = strtok(line_dup, delims);
-
 	instr = malloc(sizeof(void *) * 2);
 	if (instr == NULL)
 	{
@@ -63,8 +58,11 @@ char **parse(char *file_line)
 		exit(EXIT_FAILURE);
 	}
 
+	opcode = strtok(line_dup, delims);
+	arg = strtok(NULL, delims);
 	instr[0] = opcode;
 	instr[1] = arg;
+
 	free(line_dup);
 	return (instr);
 }
