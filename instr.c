@@ -26,7 +26,6 @@ void exec_instr(
 {
 	if (f != NULL)
 	{
-		printf("line %d arg %s\n", line, opcode[1]);
 		f(stack, opcode[1], line);
 		return;
 	}
