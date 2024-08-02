@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void (*get_instr(instr *set, char *opcode))(stacknode **top, char *data, unsigned int line)
+void (*get_instr(instr set[], char *opcode))(stacknode **top, char *data, unsigned int line)
 {
 	int i = 0;
 	void (*f)(stacknode **stack, char *data, unsigned int line) = NULL;
@@ -25,7 +25,7 @@ void exec_instr(
 {
 	if (f != NULL)
 	{
-		f(stack, opcode[2], line);
+		f(stack, opcode[1], line);
 		return;
 	}
 	/*delete_stack(stack);

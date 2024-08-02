@@ -9,7 +9,7 @@ void op_pall(stacknode **top, char *data, unsigned int line)
 	(void)data;
 	(void)line;
 
-	if (top == NULL)
+	if (*top == NULL)
 		return;
 
 	next = *top;

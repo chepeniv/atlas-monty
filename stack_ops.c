@@ -14,8 +14,8 @@ void op_push(stacknode **top, char *data, unsigned int line)
 
 	if
 	(data == NULL ||
-	*data < '0' ||
-	*data > '9')
+	data[0] < '0' ||
+	data[0] > '9')
 	{
 		dprintf(STDERR_FILENO, "L<%d>: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
@@ -30,12 +30,13 @@ void op_push(stacknode **top, char *data, unsigned int line)
 
 	n = atoi(data);
 	new->prev = NULL;
-	new->n =n;
-	if (top == NULL)
+	new->n = n;
+	if (*top == NULL)
 		new->next = NULL;
 	else {
 		(*top)->prev = new;
 		new->next = *top;
 	}
-	top = &new;
+
+	*top = new;
 }

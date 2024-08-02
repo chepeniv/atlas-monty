@@ -3,17 +3,17 @@
 instr instr_set[] = {
 	{"push", op_push},
 	{"pall", op_pall},
+	{NULL, NULL}
+};
 	/*{"pop", op_pop},
 	{"swap", op_swap},
 	{"add", op_add},
 	{"pint", op_pint},
 	{"nop", op_nop},*/
-	{NULL, NULL}
-};
 
 int main(int argc, char **argv)
 {
-	stacknode *top = NULL;
+	stacknode **top = NULL;
 	unsigned int line_num = 0;
 	size_t read_bytes;
 	FILE *monty_file;
@@ -35,14 +35,16 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 
+	top = malloc(sizeof(void *));
+	*top = NULL;
 	while (getline(&file_line, &read_bytes, monty_file) > -1)
 	{
 		line_num++;
 		opcode = parse(file_line);
-		if (*opcode != NULL)
+		if (opcode[0] != NULL)
 		{
-			f = get_instr(&instr_set[0], *opcode);
-			exec_instr(opcode, f, &top, line_num);
+			f = get_instr(instr_set, opcode[0]);
+			exec_instr(opcode, f, top, line_num);
 		}
 	}
 
@@ -54,7 +56,6 @@ int main(int argc, char **argv)
 char **parse(char *file_line)
 {
 	char *delims = " \t\n";
-	char *line_dup = strdup(file_line);
 	char **instr,
 		 *opcode = NULL,
 		 *arg = NULL;
@@ -63,15 +64,13 @@ char **parse(char *file_line)
 	if (instr == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		free(line_dup);
 		exit(EXIT_FAILURE);
 	}
 
-	opcode = strtok(line_dup, delims);
+	opcode = strtok(file_line, delims);
 	arg = strtok(NULL, delims);
 	instr[0] = opcode;
 	instr[1] = arg;
 
-	free(line_dup);
 	return (instr);
 }
