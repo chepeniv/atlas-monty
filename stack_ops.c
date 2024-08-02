@@ -1,17 +1,16 @@
 #include "monty.h"
 
-/*
- * op_pop()
- * op_swap
- * delete_stack -- repeatedly calling pop
- **/
+/* op_swap */
 
 void op_push(stacknode **top, char *data, unsigned int line)
 {
 	stacknode *new = NULL;
 	int n;
 
-	if (data == NULL)
+	if
+		(data == NULL ||
+		((data[0] < '0' || data[0] > '9') &&
+		 data[0] != '-'))
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
