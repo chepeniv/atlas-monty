@@ -13,7 +13,11 @@ void op_pint(stacknode **top, char *data, unsigned int line)
 
 	op_nop(top, data, line);
 	if (top == NULL || *top == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty%s\n", line, *opcode);
+		free(opcode);
 		exit(EXIT_FAILURE);
+	}
 
 	printf("%d\n", (*top)->n);
 }
