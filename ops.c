@@ -45,5 +45,8 @@ void op_add(stacknode **top, char *data, unsigned int line)
 
 	a = (*top)->n;
 	b = (*top)->next->n;
-	printf("%d\n", (a + b));
+	(*top)->next->n = a + b;
+	*top = (*top)->next;
+	free((*top)->prev);
+	(*top)->prev = NULL;
 }
