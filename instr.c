@@ -7,10 +7,7 @@
  *
  * Return: a function pointer that carries out the instruction
  */
-void
-(*get_instr(instr set[], char *opcode))(
-		stacknode **top,
-		char *data,
+void (*get_instr(instr set[], char *opcode))(stacknode **top, char *data,
 		unsigned int line)
 {
 	int i = 0;
