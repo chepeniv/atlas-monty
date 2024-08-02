@@ -15,9 +15,7 @@ void (*get_instr(instr set[], char *opcode))(stacknode **top, char *data, unsign
 		i++;
 	}
 
-	if (f != NULL)
-		return (f);
-	exit(EXIT_FAILURE);
+	return (f);
 }
 
 void exec_instr(
@@ -31,6 +29,6 @@ void exec_instr(
 		f(stack, opcode[1], line);
 		return;
 	}
-	/*delete_stack(stack);
-	op_invalid(opcode, line);*/
+	delete_stack(stack);
+	op_invalid(opcode, line);
 }
