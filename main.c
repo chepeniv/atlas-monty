@@ -5,11 +5,11 @@ instr instr_set[] = {
 	{"pop", op_pop},
 	{"pint", op_pint},
 	{"pall", op_pall},
+	{"nop", op_nop},
 	{NULL, NULL}
 	/*
 	 * {"swap", op_swap},
 	 * {"add", op_add},
-	 * {"nop", op_nop},
 	 */
 };
 
