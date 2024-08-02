@@ -2,14 +2,16 @@
 
 instr instr_set[] = {
 	{"push", op_push},
+	{"pop", op_pop},
+	{"pint", op_pint},
 	{"pall", op_pall},
 	{NULL, NULL}
-};
-	/*{"pop", op_pop},
+	/*
 	{"swap", op_swap},
 	{"add", op_add},
-	{"pint", op_pint},
-	{"nop", op_nop},*/
+	{"nop", op_nop},
+	*/
+};
 
 int main(int argc, char **argv)
 {
@@ -46,9 +48,12 @@ int main(int argc, char **argv)
 			f = get_instr(instr_set, opcode[0]);
 			exec_instr(opcode, f, top, line_num);
 		}
+		free(opcode);
 	}
 
 	free(file_line);
+	delete_stack(top);
+	free(top);
 	fclose(monty_file);
 	return (EXIT_SUCCESS);
 }

@@ -3,7 +3,6 @@
 /*
  * op_pop()
  * op_swap
- * create_tack -- might not need this func
  * delete_stack -- repeatedly calling pop
  **/
 
@@ -39,4 +38,31 @@ void op_push(stacknode **top, char *data, unsigned int line)
 	}
 
 	*top = new;
+}
+
+void op_pop(stacknode **top, char *data, unsigned int line)
+{
+	stacknode *old_top = NULL;
+
+	op_nop(top, data, line);
+	if (top == NULL || *top == NULL)
+		return;
+
+	old_top = *top;
+
+	printf("freeing node with value %d\n", (*top)->n);
+	*top = (*top)->next;
+	/*(*top)->prev = NULL;*/
+	free(old_top);
+}
+
+void delete_stack(stacknode **top)
+{
+	if (top == NULL)
+		return;
+
+	while (*top != NULL)
+	{
+		op_pop(top, NULL, 0);
+	}
 }

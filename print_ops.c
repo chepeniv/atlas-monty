@@ -1,21 +1,26 @@
 #include "monty.h"
 
-/* pint */
+void op_pint(stacknode **top, char *data, unsigned int line)
+{
+
+	op_nop(top, data, line);
+	if (top == NULL || *top == NULL)
+		return;
+
+	printf("%d\n", (*top)->n);
+}
 
 void op_pall(stacknode **top, char *data, unsigned int line)
 {
 	stacknode *next;
 
-	(void)data;
-	(void)line;
-
-	if (*top == NULL)
+	if (top == NULL)
 		return;
 
 	next = *top;
 	while (next != NULL)
 	{
-		printf("%d\n", next->n);
+		op_pint(&next, data, line);
 		next = next->next;
 	}
 }
