@@ -50,7 +50,6 @@ void op_pop(stacknode **top, char *data, unsigned int line)
 
 	old_top = *top;
 
-	printf("freeing node with value %d\n", (*top)->n);
 	*top = (*top)->next;
 	/*(*top)->prev = NULL;*/
 	free(old_top);
