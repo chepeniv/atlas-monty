@@ -13,7 +13,7 @@ void op_pint(stacknode **top, char *data, unsigned int line)
 
 	op_nop(top, data, line);
 	if (top == NULL || *top == NULL)
-		return;
+		exit(EXIT_FAILURE);
 
 	printf("%d\n", (*top)->n);
 }
