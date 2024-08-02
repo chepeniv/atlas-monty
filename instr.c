@@ -1,13 +1,15 @@
 #include "monty.h"
 
 void
-(*get_instr(instr set[], char *opcode))
-(stacknode **top, char *data, unsigned int line)
+(*get_instr(instr set[], char *opcode))(
+		stacknode **top,
+		char *data,
+		unsigned int line)
 {
 	int i = 0;
 	void (*f)(stacknode **stack, char *data, unsigned int line) = NULL;
 
-	while(set[i].opcode != NULL)
+	while (set[i].opcode != NULL)
 	{
 		if (strcmp(opcode, set[i].opcode) == 0)
 		{
