@@ -78,10 +78,13 @@ void op_swap(stacknode **top, char *data, unsigned int line)
 	(void) line;
 
 	if
-		(top == NULL ||
-		 *top == NULL ||
-		 (*top)->next == NULL)
+	(top == NULL ||
+	*top == NULL ||
+	(*top)->next == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line);
 		exit(EXIT_FAILURE);
+	}
 
 	newtop = malloc(sizeof(void *));
 	if (newtop == NULL)
