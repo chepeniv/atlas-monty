@@ -32,8 +32,10 @@ void op_nop(stacknode **stack, char *data, unsigned int line)
 void op_add(stacknode **top, char *data, unsigned int line)
 {
 	int a, b;
+	stacknode **new_top;
 
 	(void) data;
+
 	if
 	(top == NULL ||
 	*top == NULL ||
@@ -43,10 +45,20 @@ void op_add(stacknode **top, char *data, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 
-	a = (*top)->n;
-	b = (*top)->next->n;
-	(*top)->next->n = a + b;
-	*top = (*top)->next;
-	free((*top)->prev);
-	(*top)->prev = NULL;
+	new_top = malloc(sizeof(void *));
+	if (new_top == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+	*new_top = (*top)->next;
+	a = (*new_top)->n;
+	b = (*top)->n;
+	(*new_top)->n = a + b;
+	(*new_top)->prev = NULL;
+
+	free(*top);
+	*top = *new_top;
+	free(new_top);
 }

@@ -54,7 +54,7 @@ void op_push(stacknode **top, char *data, unsigned int line)
  */
 void op_pop(stacknode **top, char *data, unsigned int line)
 {
-	stacknode *old_top = NULL;
+	stacknode **new_top = NULL;
 
 	op_nop(top, data, line);
 	if (top == NULL || *top == NULL)
@@ -63,11 +63,17 @@ void op_pop(stacknode **top, char *data, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 
-	old_top = *top;
+	new_top = malloc(sizeof(void *));
+	if (new_top == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	*new_top = (*top)->next;
 
-	*top = (*top)->next;
-	/*(*top)->prev = NULL;*/
-	free(old_top);
+	free(*top);
+	*top = *new_top;
+	free(new_top);
 }
 
 void op_swap(stacknode **top, char *data, unsigned int line)
