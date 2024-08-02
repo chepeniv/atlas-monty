@@ -13,6 +13,14 @@ instr instr_set[] = {
 	 */
 };
 
+
+/**
+ * main -
+ * @argc:
+ * @argv:
+ *
+ * Return:
+ */
 int main(int argc, char **argv)
 {
 	stacknode **top = NULL;
@@ -57,6 +65,13 @@ int main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
+
+/**
+ * parse -
+ * @file_line:
+ *
+ * Return:
+ */
 char **parse(char *file_line)
 {
 	char *delims = " \t\n";

@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * get_instr -
+ * @set:
+ * @opcode:
+ *
+ * Return:
+ */
 void (*get_instr(instr set[], char *opcode))
 (stacknode * *top, char *data, unsigned int line)
 {
@@ -19,6 +26,16 @@ void (*get_instr(instr set[], char *opcode))
 	return (f);
 }
 
+
+/**
+ * exec_instr -
+ * @opcode:
+ * @f:
+ * @stack:
+ * @line:
+ *
+ * Return:
+ */
 void exec_instr(
 		char **opcode,
 		void (*f)(stacknode **stack, char *data, unsigned int line),

@@ -1,5 +1,13 @@
 #include "monty.h"
 
+/**
+ * op_pint -
+ * @top:
+ * @data:
+ * @line:
+ *
+ * Return:
+ */
 void op_pint(stacknode **top, char *data, unsigned int line)
 {
 
@@ -10,6 +18,15 @@ void op_pint(stacknode **top, char *data, unsigned int line)
 	printf("%d\n", (*top)->n);
 }
 
+
+/**
+ * op_pall -
+ * @top:
+ * @data:
+ * @line:
+ *
+ * Return:
+ */
 void op_pall(stacknode **top, char *data, unsigned int line)
 {
 	stacknode *next;

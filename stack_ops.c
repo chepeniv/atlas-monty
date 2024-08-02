@@ -3,6 +3,14 @@
 /* op_swap */
 int is_int(char *str);
 
+/**
+ * op_push -
+ * @top:
+ * @data:
+ * @line:
+ *
+ * Return:
+ */
 void op_push(stacknode **top, char *data, unsigned int line)
 {
 	stacknode *new = NULL;
@@ -35,6 +43,14 @@ void op_push(stacknode **top, char *data, unsigned int line)
 	*top = new;
 }
 
+/**
+ * op_pop -
+ * @top:
+ * @data:
+ * @line:
+ *
+ * Return:
+ */
 void op_pop(stacknode **top, char *data, unsigned int line)
 {
 	stacknode *old_top = NULL;
@@ -50,6 +66,12 @@ void op_pop(stacknode **top, char *data, unsigned int line)
 	free(old_top);
 }
 
+/**
+ * delete_stack -
+ * @top:
+ *
+ * Return:
+ */
 void delete_stack(stacknode **top)
 {
 	if (top == NULL)
@@ -61,6 +83,12 @@ void delete_stack(stacknode **top)
 	}
 }
 
+/**
+ * is_int -
+ * @str:
+ *
+ * Return:
+ */
 int is_int(char *str)
 {
 	int i = 0;
