@@ -36,7 +36,8 @@ typedef struct _instr
         void (*f)(stacknode **stack, char *data, unsigned int line);
 } instr;
 
-instr *init_instr_set();
+extern instr instr_set[];
+
 char **parse(char *file_line);
 void exec_instr(
 		char **opcode,

@@ -1,22 +1,5 @@
 #include "monty.h"
 
-/* make this an extern variable ??? */
-instr *init_instr_set()
-{
-	instr instr_set[]= {
-		{"push", op_push},
-		{"pall", op_pall},
-		/*{"pop", op_pop},
-		{"swap", op_swap},
-		{"add", op_add},
-		{"pint", op_pint},
-		{"nop", op_nop},*/
-		{NULL, NULL}
-	};
-
-	return (&instr_set[0]);
-}
-
 void (*get_instr(instr *set, char *opcode))(stacknode **top, char *data, unsigned int line)
 {
 	int i = 0;

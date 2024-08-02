@@ -21,6 +21,8 @@ compilation : `gcc -Wall -Werror -Wextra -pedantic -ggdb3 *.c -o monty`
 - *how is it declared ? what is its scope ?*
 - *where should extern be used ?*
 
+
+
 ## the monty language
 this project's goal is to create an interpreter for monty bytecode files
 

@@ -1,5 +1,16 @@
 #include "monty.h"
 
+instr instr_set[] = {
+	{"push", op_push},
+	{"pall", op_pall},
+	/*{"pop", op_pop},
+	{"swap", op_swap},
+	{"add", op_add},
+	{"pint", op_pint},
+	{"nop", op_nop},*/
+	{NULL, NULL}
+};
+
 int main(int argc, char **argv)
 {
 	stacknode *top = NULL;
@@ -10,7 +21,6 @@ int main(int argc, char **argv)
 		 *file_line = NULL,
 		 *open_mode = "r";
 	void (*f)(stacknode **stack, char *data, unsigned int line);
-	instr *instr_set;
 
 	if (argc != 2)
 	{
@@ -25,14 +35,13 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 
-	instr_set = init_instr_set();
 	while (getline(&file_line, &read_bytes, monty_file) > -1)
 	{
 		line_num++;
 		opcode = parse(file_line);
 		if (*opcode != NULL)
 		{
-			f = get_instr(instr_set, *opcode);
+			f = get_instr(&instr_set[0], *opcode);
 			exec_instr(opcode, f, &top, line_num);
 		}
 	}
