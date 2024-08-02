@@ -26,7 +26,8 @@ void op_push(stacknode **top, char *data, unsigned int line)
 	new->n = n;
 	if (*top == NULL)
 		new->next = NULL;
-	else {
+	else
+	{
 		(*top)->prev = new;
 		new->next = *top;
 	}
