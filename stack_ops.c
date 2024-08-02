@@ -1,16 +1,14 @@
 #include "monty.h"
 
 /* op_swap */
+int is_int(char *str);
 
 void op_push(stacknode **top, char *data, unsigned int line)
 {
 	stacknode *new = NULL;
 	int n;
 
-	if
-		(data == NULL ||
-		((data[0] < '0' || data[0] > '9') &&
-		 data[0] != '-'))
+	if (!is_int(data))
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
@@ -60,4 +58,24 @@ void delete_stack(stacknode **top)
 	{
 		op_pop(top, NULL, 0);
 	}
+}
+
+int is_int(char *str)
+{
+	int i = 0;
+
+	if
+	(str == NULL ||
+	(!isdigit(str[i]) && str[i] != '-'))
+		return (false);
+
+	i++;
+	while (str[i] != '\0')
+	{
+		if (!isdigit(str[i]))
+			return (false);
+		i++;
+	}
+
+	return (true);
 }

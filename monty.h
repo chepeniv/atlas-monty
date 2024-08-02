@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
 
 /**
  * struct _stack_node - doubly linked list representation of a stack (or queue)
