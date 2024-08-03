@@ -3,7 +3,7 @@
 /**
  * get_instr - find a function based on opcode given
  * @set: set of instructions
- * @opcode: the name of the instruction
+ * @line: not actually a func param. it is part of the return value
  *
  * Return: a function pointer that carries out the instruction
  */
